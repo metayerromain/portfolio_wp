@@ -1,0 +1,431 @@
+/*
+|---------------------------------------------------------------
+| MIXINS
+|---------------------------------------------------------------
+| Mixins called from generator to generate classes
+|
+|
+*/
+
+/*
+|
+| Commonly used mixins
+|-----------------------
+|
+*/
+@mixin generate-class-from-map($map, $class-prefix, $css-property, $important: ''){
+  @each $class-value, $css-value in $map {
+    .#{$class-prefix}-#{$class-value}{
+      #{$css-property}: $css-value #{$important};
+    }
+  }
+}
+@mixin generate-screen-class-from-map($class-prefix-screen, $class-prefix-property, $class-prefix-value, $css-property, $css-value){
+  $class: false;
+  @if $class-prefix-property == ''{
+    $class: #{$class-prefix-screen}-#{$class-prefix-value};
+  } @else{
+    $class: #{$class-prefix-screen}-#{$class-prefix-property}-#{$class-prefix-value};
+  }
+  .#{$class}{
+    #{$css-property}: $css-value;
+  }
+}
+
+
+/*
+|
+| Margins & Paddings
+|-----------------------
+|
+*/
+@mixin generate-spaces($spaces, $space-properties){
+  @each $prefix-space, $space in $spaces {
+    @each $prefix-property, $property in $space-properties{
+      .#{$prefix-property}-#{$prefix-space}{
+        @each $property-value in $property{
+          #{$property-value}: $space !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-spaces-child($spaces, $space-properties){
+  @each $prefix-space, $space in $spaces {
+    @each $prefix-property, $property in $space-properties{
+      .#{$prefix-property}-#{$prefix-space}-child{
+        > *{
+          @each $property-value in $property{
+            #{$property-value}: $space !important;
+          }
+        }
+      }
+      .#{$prefix-property}-#{$prefix-space}-child-not-last{
+        > *:not(:last-child){
+          @each $property-value in $property{
+            #{$property-value}: $space !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Responsive Margins & Paddings
+|--------------------------------
+|
+*/
+@mixin create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space){
+  .#{$prefix-screen-size}-#{$prefix-property}-#{$prefix-space}{
+    @each $property-value in $property{
+      #{$property-value}: $space !important;
+    }
+  }
+}
+@mixin create-space-child-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space){
+  .#{$prefix-screen-size}-#{$prefix-property}-#{$prefix-space}-child{
+    > *{
+      @each $property-value in $property{
+        #{$property-value}: $space !important;
+      }
+    }
+  }
+  .#{$prefix-screen-size}-#{$prefix-property}-#{$prefix-space}-child-not-last{
+    > *:not(:last-child){
+      @each $property-value in $property{
+        #{$property-value}: $space !important;
+      }
+    }
+  }
+}
+@mixin generate-screen-spaces($screen-type, $screen-sizes, $spaces, $space-properties){
+  @each $prefix-screen-size, $screen-size in $screen-sizes {
+    @each $prefix-space, $space in $spaces {
+      @each $prefix-property, $property in $space-properties{
+        @if $screen-type == down {
+          @include media-breakpoint-down(#{$screen-size}){
+            @include create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+            @include create-space-child-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+          }
+        }
+        @if $screen-type == up {
+          @include media-breakpoint-up(#{$screen-size}){
+            @include create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+            @include create-space-child-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+          }
+        }
+        @if $screen-type == only {
+          @include media-breakpoint-only(#{$screen-size}){
+            @include create-space-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+            @include create-space-child-class($prefix-screen-size, $prefix-property, $prefix-space, $property, $space);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Font-sizes
+|-----------------------
+|
+*/
+@mixin generate-font-sizes($font-sizes){
+  @each $prefix-font-size, $font-size in $font-sizes{
+    .fs-#{$prefix-font-size}{
+      font-size: map-get($font-size, 'default') !important;
+      @each $screen-size, $font-size-value in map-get($font-size, 'screens'){
+        @include media-breakpoint-down(#{$screen-size}){
+          font-size: $font-size-value !important;
+        }
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Titles
+|-----------------------
+|
+*/
+@mixin generate-title-properties($size, $screens){
+  @each $property, $value in $default-titles{
+    #{$property}: $value;
+  }
+  font-size: $size;
+
+  @each $screen-size, $font-size in $screens{
+    @include media-breakpoint-down(#{$screen-size}){
+      font-size: $font-size;
+    }
+  }
+}
+
+@mixin generate-titles($title-sizes){
+  @each $prefix-size, $size in $title-sizes{
+    .title-#{$prefix-size}{
+      @include generate-title-properties(map-get($size, 'default'), map-get($size, 'screens'));
+    }
+  }
+}
+
+
+/*
+|
+| Links
+|-----------------------
+|
+*/
+@mixin generate-links($links-colors){
+  @each $prefix-color, $color in $links-colors{
+    .link-#{$prefix-color}{
+      color: map-get($color, 'color');
+      &:hover{
+        color: map-get($color, 'hover');
+      }
+    }
+
+    .links-#{$prefix-color}{
+      a{
+        color: map-get($color, 'color');
+        &:hover{
+          color: map-get($color, 'hover');
+        }
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Buttons
+|-----------------------
+|
+*/
+@mixin generate-button-properties($properties, $icon-width: $button-default-icon-width, $icon-space: $button-default-padding-x){
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+  &:hover{
+    color: map-get($properties, 'color');
+  }
+
+  .icon{
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: all 0.4s;
+    width: $icon-width;
+
+    svg, img{
+      width:100%;
+      max-height: 100%;
+    }
+  }
+
+  &.btn-icon-right{
+    text-align: right;
+    padding-right: $icon-space + $button-default-icon-space + $icon-width;
+    .icon{
+      right: $icon-space;
+    }
+  }
+
+  &.btn-icon-left{
+    text-align: left;
+    padding-left: $icon-space + $button-default-icon-space + $icon-width;
+    .icon{
+      left: $icon-space;
+    }
+  }
+}
+
+@mixin generate-buttons($button-sizes, $button-colors, $button-default){
+  .btn{
+    @include generate-button-properties($button-default);
+  }
+
+  @each $prefix-color, $properties in $button-colors{
+    .btn-#{$prefix-color}{
+      @extend .btn;
+      @include generate-button-properties($properties);
+    }
+  }
+
+  @each $prefix-size, $properties in $button-sizes {
+    .btn-#{$prefix-size}{
+      @extend .btn;
+      $iconSettings: map-get($properties, 'icon');
+      @include generate-button-properties(map-get($properties, 'button'), map-get($iconSettings, 'width'), map-get($iconSettings, 'space'));
+    }
+  }
+}
+
+
+/*
+|
+| Blocks
+|-----------------------
+|
+*/
+@mixin generate-block-properties($properties){
+  @each $property, $value in $properties {
+    #{$property}: $value;
+  }
+}
+
+@mixin generate-blocks($block-colors, $block-default){
+  .block {
+    @include generate-block-properties($block-default);
+  }
+
+  @each $prefix-color, $properties in $block-colors{
+    .block-#{$prefix-color}{
+      @extend .block;
+      @include generate-block-properties($properties);
+    }
+  }
+}
+
+
+/*
+|
+| Hidden classes
+|-----------------------
+|
+*/
+@mixin generate-hidden-classes($screen-sizes-only, $screen-sizes-down, $screen-sizes-up){
+  @each $prefix-size, $screen-size in $screen-sizes-only {
+    @include media-breakpoint-only(#{$screen-size}){
+      @include generate-screen-class-from-map($prefix-size, '', hidden, display, none!important);
+    }
+  }
+  @each $prefix-size, $screen-size in $screen-sizes-down {
+    @include media-breakpoint-down(#{$screen-size}){
+      @include generate-screen-class-from-map($prefix-size, '', hidden, display, none!important);
+    }
+  }
+  @each $prefix-size, $screen-size in $screen-sizes-up {
+    @include media-breakpoint-up(#{$screen-size}){
+      @include generate-screen-class-from-map($prefix-size, '', hidden, display, none!important);
+    }
+  }
+}
+
+
+
+/*
+|
+| Display
+|-----------------------
+|
+*/
+@mixin generate-screen-displays($displays, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up){
+  @each $prefix-display, $display in $displays{
+    @each $prefix-size, $screen-size in $screen-sizes-only {
+      @include media-breakpoint-only(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'd', $prefix-display, display, $display);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-down {
+      @include media-breakpoint-down(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'd', $prefix-display, display, $display);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-up {
+      @include media-breakpoint-up(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'd', $prefix-display, display, $display);
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Text Align
+|-----------------------
+|
+*/
+@mixin generate-text-alignments($align-types, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up){
+  @each $prefix-align-type, $align-type in $align-types{
+
+    @each $prefix-size, $screen-size in $screen-sizes-only {
+      @include media-breakpoint-only(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'ta', $prefix-align-type, text-align, $align-type);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-down {
+      @include media-breakpoint-down(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'ta', $prefix-align-type, text-align, $align-type);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-up {
+      @include media-breakpoint-up(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'ta', $prefix-align-type, text-align, $align-type);
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Min-height
+|-----------------------
+|
+*/
+@mixin generate-min-heights($min-heights, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up){
+  @each $prefix-min-height, $min-height in $min-heights{
+
+    @each $prefix-size, $screen-size in $screen-sizes-only {
+      @include media-breakpoint-only(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'mh', $prefix-min-height, min-height, $min-height);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-down {
+      @include media-breakpoint-down(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'mh', $prefix-min-height, min-height, $min-height);
+      }
+    }
+    @each $prefix-size, $screen-size in $screen-sizes-up {
+      @include media-breakpoint-up(#{$screen-size}){
+        @include generate-screen-class-from-map($prefix-size, 'mh', $prefix-min-height, min-height, $min-height);
+      }
+    }
+  }
+}
+
+
+/*
+|
+| Sections
+|-----------------------
+|
+*/
+@mixin generate-sections($sections){
+  .section{
+    position: relative;
+    padding-top: map-get($sections, 'default') !important;
+    padding-bottom: map-get($sections, 'default') !important;
+    @each $screen-size, $section-padding in map-get($sections, 'screens'){
+      @include media-breakpoint-down(#{$screen-size}){
+        padding-top: $section-padding !important;
+        padding-bottom: $section-padding !important;
+      }
+    }
+  }
+}
+
+

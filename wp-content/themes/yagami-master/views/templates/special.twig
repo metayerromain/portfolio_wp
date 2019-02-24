@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	{#
+    |
+    | Tpl Special
+    |---------------
+    #}
+	<section class="py-md">
+		<div class="container">
+			<h1>{{ post.title }} </h1>
+			<hr/>
+			<div>
+				{{ post.content }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

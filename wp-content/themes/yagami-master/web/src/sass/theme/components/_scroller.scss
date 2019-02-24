@@ -1,0 +1,28 @@
+/*
+|-----------------------
+| 	  Scroller CSS
+|-----------------------
+|
+*/
+[data-scroller-wrapper]{
+	display: flex!important; 
+	justify-content: flex-start;
+	width: 100%;
+	overflow: hidden;
+	
+	&.scroller-direction-right{
+		justify-content: flex-end;
+	}
+
+	.scroller-wrapper-inner{
+		display: flex;
+		white-space: nowrap;
+	}
+
+	[data-scroller-mask]{
+		background-repeat: no-repeat;
+		display: inline-block;
+		-webkit-background-clip: text;
+		color: transparent;
+	}
+}

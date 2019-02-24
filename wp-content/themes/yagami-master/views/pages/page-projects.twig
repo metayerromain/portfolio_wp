@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div id="page-projets" class="p-r" data-ajax-url="/ajax/posts">
+        {{ global.lines() }}
+        <section class="pt-xxl">
+            <div class="row">
+                <div class="col-lg-4 mx-auto">
+                    <div class="fs-md tt-u split">{{post.get_field('projects_title')}}</div>
+                    <div class="fs-sm fw-sm mt-md split">{{post.get_field('projects_desc')|nl2br}}</div>
+                </div>
+            </div>
+        </section>
+        <section class="posts">
+            {% for item in posts %}
+            <div class="post-block">
+                <div class="row no-gutters h-100 mt-xxl md-down-mt-lg">
+                    <div class="md-down-d-none col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <div class="row ai-center h-100">
+                            <div class="col-lg-9 mx-auto pr-md">
+                                <div class="title-xl tt-u project-text">{{item.title}}</div>
+                                <div class="mt-md fw-sm project-text">{{item.get_field('posts_desc')}}</div>
+                                <a class="mt-md link btn btn-black project-text">Découvrir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="bg-cover h-100 project-img" style="background:url('{{item.get_field('posts_img').url}}');"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </section>
+
+    </div>
+{% endblock %}

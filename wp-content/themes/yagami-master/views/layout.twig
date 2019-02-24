@@ -1,0 +1,95 @@
+<!doctype html>
+<html {{ site.language_attributes }}>
+    <head>
+        <meta charset="{{ site.charset }}">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% block meta_description %} 
+            <meta name="description" content="{{ site.description }}"> 
+        {% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ dist }}/css/app.css">
+            {% if debug %}
+                <link rel="stylesheet" href="{{ dist }}/css/debug_tool.css">
+            {% endif %}
+        {% endblock %}
+
+        {{ wp_head }}
+    </head>
+    
+    {#
+    |
+    | Import macros
+    |----------------
+    #}
+    {% import '_macros/global.twig' as global %}
+    
+    {#
+    |
+    | Body
+    |-------
+    #}
+    <body class="{{ body_class }}">
+        <div class="site-container">
+            {#
+            |
+            | Header
+            |---------
+            #}
+            {% block header %}
+                {% include '_layouts/header.twig' %}
+            {% endblock %}
+            <div class="cursor">
+                <div class="cursor-inner"></div>
+            </div>
+            <div class="second-cursor">
+                <div class="cursor-inner"></div>
+            </div>
+            {#
+            |
+            | Content
+            |---------
+            #}
+            {% block content %}{% endblock %}
+
+            {#
+            |
+            | Footer
+            |---------
+            #}
+            {% include '_layouts/footer.twig' %}
+        </div>
+
+        {#
+        |
+        | Debug Tool
+        |------------
+        #}
+        {% if debug %}
+            {% include '_debug-tool/debug-tool.twig' %}
+        {% endif %}
+
+
+        {#
+        |
+        | Javascripts
+        |--------------
+        #}
+        {% block javascripts %}
+            <script src="{{ dist }}/js/app.js"></script>
+
+            {% if debug %}
+                <script src="{{ dist }}/js/debug_tool.js"></script>
+            {% endif %}
+        {% endblock %}
+	     
+        {#
+        |
+        | WP Footer
+        |--------------
+        #}
+        {{ wp_footer }}
+    </body>
+</html>

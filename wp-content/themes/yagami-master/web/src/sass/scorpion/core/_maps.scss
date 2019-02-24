@@ -1,0 +1,375 @@
+/*
+|---------------------------------------------------------------
+| MAPS
+|---------------------------------------------------------------
+| Sass maps used in classes generation
+|
+|
+*/
+
+/*
+|
+| Font Sizes Map
+|---------------------
+|
+*/
+$font-sizes: (
+  'xs': (
+     'default': $font-size-xs,
+     'screens': (
+       'lg': $screen-lg-font-size-xs,
+       'md': $screen-md-font-size-xs,
+       'sm': $screen-sm-font-size-xs,
+       'xs': $screen-xs-font-size-xs
+     )
+  ),
+  'sm': (
+    'default': $font-size-sm,
+    'screens': (
+       'lg': $screen-lg-font-size-sm,
+       'md': $screen-md-font-size-sm,
+       'sm': $screen-sm-font-size-sm,
+       'xs': $screen-xs-font-size-sm
+    )
+  ),
+  'md': (
+    'default': $font-size-md,
+    'screens': (
+       'lg': $screen-lg-font-size-md,
+       'md': $screen-md-font-size-md,
+       'sm': $screen-sm-font-size-md,
+       'xs': $screen-xs-font-size-md
+    )
+  ),
+  'lg': (
+    'default': $font-size-lg,
+    'screens': (
+       'lg': $screen-lg-font-size-lg,
+       'md': $screen-md-font-size-lg,
+       'sm': $screen-sm-font-size-lg,
+       'xs': $screen-xs-font-size-lg
+    )
+  ),
+  'xl': (
+    'default': $font-size-xl,
+    'screens': (
+       'lg': $screen-lg-font-size-xl,
+       'md': $screen-md-font-size-xl,
+       'sm': $screen-sm-font-size-xl,
+       'xs': $screen-xs-font-size-xl
+    )
+  ),
+  'xxl': (
+    'default': $font-size-xxl,
+    'screens': (
+       'lg': $screen-lg-font-size-xxl,
+       'md': $screen-md-font-size-xxl,
+       'sm': $screen-sm-font-size-xxl,
+       'xs': $screen-xs-font-size-xxl
+    )
+  )
+);
+
+
+/*
+|
+| Title Sizes Map
+|---------------------
+|
+*/
+$title-sizes: (
+  'xs': (
+    'default': $font-size-title-xs,
+    'screens': (
+      'lg': $screen-lg-font-size-title-xs,
+      'md': $screen-md-font-size-title-xs,
+      'sm': $screen-sm-font-size-title-xs,
+      'xs': $screen-xs-font-size-title-xs
+    )
+  ),
+  'sm': (
+    'default': $font-size-title-sm,
+    'screens': (
+      'lg': $screen-lg-font-size-title-sm,
+      'md': $screen-md-font-size-title-sm,
+      'sm': $screen-sm-font-size-title-sm,
+      'xs': $screen-xs-font-size-title-sm
+    )
+  ),
+  'md': (
+    'default': $font-size-title-md,
+    'screens': (
+      'lg': $screen-lg-font-size-title-md,
+      'md': $screen-md-font-size-title-md,
+      'sm': $screen-sm-font-size-title-md,
+      'xs': $screen-xs-font-size-title-md
+    )
+  ),
+  'lg': (
+    'default': $font-size-title-lg,
+    'screens': (
+      'lg': $screen-lg-font-size-title-lg,
+      'md': $screen-md-font-size-title-lg,
+      'sm': $screen-sm-font-size-title-lg,
+      'xs': $screen-xs-font-size-title-lg
+    )
+  ),
+  'xl': (
+    'default': $font-size-title-xl,
+    'screens': (
+      'lg': $screen-lg-font-size-title-xl,
+      'md': $screen-md-font-size-title-xl,
+      'sm': $screen-sm-font-size-title-xl,
+      'xs': $screen-xs-font-size-title-xl
+    )
+  ),
+  'xxl': (
+    'default': $font-size-title-xxl,
+    'screens': (
+      'lg': $screen-lg-font-size-title-xxl,
+      'md': $screen-md-font-size-title-xxl,
+      'sm': $screen-sm-font-size-title-xxl,
+      'xs': $screen-xs-font-size-title-xxl
+    )
+  )
+);
+
+
+/*
+|
+| Buttons Sizes Map
+|---------------------
+|
+*/
+$button-sizes: (
+  'xs': (
+    'button': (
+      'padding': $button-xs-padding-y $button-xs-padding-x,
+      'font-size' : $button-xs-font-size
+    ),
+    'icon': (
+      'width': $button-xs-icon-width,
+      'space': $button-xs-padding-x,
+    )
+  ),
+  'sm': (
+    'button': (
+      'padding': $button-sm-padding-y $button-sm-padding-x,
+      'font-size' : $button-sm-font-size
+    ),
+    'icon': (
+      'width': $button-sm-icon-width,
+      'space': $button-sm-padding-x,
+    )
+  ),
+  'md': (
+    'button': (
+      'padding': $button-md-padding-y $button-md-padding-x,
+      'font-size' : $button-md-font-size
+    ),
+    'icon': (
+      'width': $button-md-icon-width,
+      'space': $button-md-padding-x,
+    )
+  ),
+  'lg': (
+    'button': (
+      'padding': $button-lg-padding-y $button-lg-padding-x,
+      'font-size' : $button-lg-font-size
+    ),
+    'icon': (
+      'width': $button-lg-icon-width,
+      'space': $button-lg-padding-x,
+    )
+  )
+);
+
+
+/*
+|
+| Margins & Paddings Maps
+|--------------------------
+|
+*/
+$spaces: (
+  '0' : 0,
+  'xs': $xs,
+  'sm': $sm,
+  'md': $md,
+  'lg': $lg,
+  'xl': $xl,
+  'xxl': $xxl
+);
+
+$space-properties: (
+  'm' : 'margin',
+  'mt': 'margin-top',
+  'mb': 'margin-bottom',
+  'my': 'margin-top' 'margin-bottom',
+  'ml': 'margin-left',
+  'mr': 'margin-right',
+  'mx': 'margin-left' 'margin-right',
+  'p' : 'padding',
+  'pt': 'padding-top',
+  'pb': 'padding-bottom',
+  'py': 'padding-top' 'padding-bottom',
+  'pl': 'padding-left',
+  'pr': 'padding-right',
+  'px': 'padding-left' 'padding-right'
+);
+
+/*
+|
+| Screen Sizes Maps
+|--------------------------
+|
+*/
+$screen-sizes-only: (
+  'xs-only': 'xs',
+  'sm-only': 'sm',
+  'md-only': 'md',
+  'lg-only': 'lg',
+  'xl-only': 'xl'
+);
+
+$screen-sizes-up: (
+  'xs-up': 'xs',
+  'sm-up': 'sm',
+  'md-up': 'md',
+  'lg-up': 'lg',
+  'xl-up': 'xl'
+);
+
+$screen-sizes-down: (
+  'xs-down': 'xs',
+  'sm-down': 'sm',
+  'md-down': 'md',
+  'lg-down': 'lg'
+);
+
+
+/*
+|-------------------------------
+| Font weight classes creation
+|-------------------------------
+| How to use: add lines to create more "font weight classes"
+| - Generated classes: .font-{weight}
+| - Exemple: .font-regular
+|
+*/
+
+/*
+|
+| Font-weights
+|---------------
+|
+*/
+
+$font-weights : (
+  '100' : 100,
+  '200' : 200,
+  '300' : 300,
+  '400' : 400,
+  '500' : 500,
+  '600' : 600,
+  '700' : 700,
+  '800' : 800,
+  '900' : 900
+);
+
+
+/*
+|
+| Text Align Map
+|--------------------------
+|
+*/
+$align-types: (
+  'r': right,
+  'l': left,
+  'c': center,
+  'j': justify
+);
+
+
+/*
+|-------------------------------
+| Line-height classes creation
+|-------------------------------
+| How to use: add lines to create more "line-height classes"
+| - Generated classes: .lh-{weight}
+| - Exemple: .lh-sm
+|
+*/
+$line-heights: (
+  'xs':   $line-height-xs,
+  'sm':   $line-height-sm,
+  'md':   $line-height-md,
+  'lg':   $line-height-lg,
+  'xl':   $line-height-xl,
+  'xxl':  $line-height-xxl
+);
+
+
+/*
+|
+| Letter Spacing Map
+|--------------------------
+|
+*/
+$letter-spacings: (
+  'xs':   $letter-spacing-xs,
+  'sm':   $letter-spacing-sm,
+  'md':   $letter-spacing-md,
+  'lg':   $letter-spacing-lg,
+  'xl':   $letter-spacing-xl,
+  'xxl':  $letter-spacing-xxl
+);
+
+
+/*
+|
+| Min Height Map
+|--------------------------
+|
+*/
+$min-heights: (
+  'xs':   $min-height-xs,
+  'sm':   $min-height-sm,
+  'md':   $min-height-md,
+  'lg':   $min-height-lg,
+  'xl':   $min-height-xl,
+  'full': $min-height-full
+);
+
+
+/*
+|
+| Display Map
+|--------------------------
+|
+*/
+$displays: (
+  'i':  inline,
+  'b':  block,
+  'ib': inline-block,
+  'f':  flex,
+  'if': inline-flex
+);
+
+
+/*
+|
+| Section Map
+|--------------------------
+|
+*/
+$sections: (
+  'default': $section-padding,
+  'screens': (
+    'lg': $screen-lg-section-padding,
+    'md': $screen-md-section-padding,
+    'sm': $screen-sm-section-padding,
+    'xs': $screen-xs-section-padding
+  )
+);

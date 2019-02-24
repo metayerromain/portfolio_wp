@@ -1,0 +1,17 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	{#
+    |
+    | Section Manga
+    |----------------
+    #}
+	<section class="py-md">
+		<div class="container">
+			<h1>{{ post.title }}</h1>
+			<p>{{ post.date }}</p>
+			<hr/>
+			<div>{{ post.content }}</div>
+		</div>
+	</section>
+{% endblock %}

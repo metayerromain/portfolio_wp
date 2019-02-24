@@ -1,0 +1,469 @@
+@import 'reset.scss';
+
+/*
+|--------------------
+| 	  DEBUG TOOL
+|--------------------
+*/
+
+/*
+|
+| Variables
+|------------
+*/
+$debugRed: #dc3545;
+$debugGreen: #5e976d;
+$debugBlue: #007bff;
+$almostWhite: #f2F2F2;
+$debugVeryLightGrey: #E5E5E5;
+$debugLightGrey: #aeaeae;
+$debugDarkGrey: #222222;
+$toolbarHeight: 36px;
+$headerHeight: 80px;
+$sidebarWidth: 200px;
+$debugMap: (
+  'red': $debugRed,
+  'green': $debugGreen,
+  'blue': $debugBlue,
+  'almost-white': $almostWhite,
+  'very-light-grey': $debugVeryLightGrey,
+  'light-grey': $debugLightGrey,
+  'dark-grey': $debugDarkGrey,
+);
+
+/*
+|
+| Debug Tool
+|-------------
+*/
+#debug-tool{
+	position: fixed;
+	z-index: 10000;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	background-color: #fff;
+	font-size: 12px;
+	font-family: 'arial';
+	font-style: normal;
+	color: $debugDarkGrey;
+	
+	/*
+	|
+	| States
+	|---------
+	*/
+	&.closed{
+		width: 100%;
+		height: $toolbarHeight;
+	}
+
+	&.expanded{
+		width: 100%;
+		height: 100vh;
+
+		.btn-retract{
+			display: none!important;
+		}
+
+		.btn-expand{
+			background-color: $debugRed!important;
+		}
+	}
+
+	&.retracted{
+		width: $toolbarHeight;
+		height: $toolbarHeight;
+
+		.btn-expand{
+			display: none!important;
+		}
+
+		.btn-retract{
+			background-color: $debugGreen!important;
+		}
+	}
+
+	
+	/*
+	|
+	| Toolbar
+	|----------
+	*/
+	.toolbar{
+		position: relative;
+		background-color: $debugDarkGrey;
+		width: 100%;
+		height: $toolbarHeight;
+		display: flex;
+		justify-content: space-between;
+
+		.btn-toolbar{
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #fff;
+			font-size: 22px;
+		}
+		
+		.shortcuts{
+			.btn-expand{
+				background-color: $debugGreen;
+				width: $toolbarHeight * 1;
+			}
+		}
+
+		.btn-retract{
+			background-color: $debugRed;
+			width: $toolbarHeight;
+		}
+	}
+
+
+	/*
+	|
+	| Body
+	|-------
+	*/
+	.body{
+		/*
+		|
+		| Header
+		|---------
+		*/
+		.header{
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: $headerHeight;
+			background-color: $debugGreen;
+			color: #fff;
+		}
+
+		/*
+		|
+		| Content
+		|---------
+		*/
+		.content{
+			position: relative;
+			top: 0;
+			height: calc(100vh - (#{$toolbarHeight} + #{$headerHeight}));
+
+			/*
+			|
+			| Nav
+			|---------
+			*/
+			nav{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: $sidebarWidth;
+				height: 100%;
+				background-color: $debugDarkGrey;
+				ul{
+					li{
+						a{
+							position: relative;
+							display: flex;
+							align-items: center;
+							width: 100%;
+							padding: 10px 0;
+							color: $debugLightGrey;
+							font-size: 16px;
+
+							&.active, &:hover{
+								background-color: lighten($debugDarkGrey, 10%);
+							}
+
+							i{
+								
+								color: $debugLightGrey;
+							}
+
+							svg{
+								position: absolute;
+								top: 50%;
+								transform: translateY(-50%);
+								left: 15px;
+							}
+
+							span{
+								padding-left: 35px;
+								font-size: 14px;
+								margin-left: 10px;
+							}
+						}
+					}
+				}
+			}
+
+			/*
+			|
+			| Core
+			|---------
+			*/
+			.core{
+				position: absolute;
+				top: 0;
+				left: $sidebarWidth;
+				width: calc(100% - #{$sidebarWidth});
+				height: 100%;
+				overflow: auto;
+				padding: 15px;
+
+				.toggle-content{
+					display: none;
+
+					&.active{
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+
+	ul.debug-list{
+		position: relative;
+		
+		li{
+			position: relative;
+			padding: 10px 0px 10px 30px;
+
+			&:first-child{
+				&:after{
+					top: 50%;
+					height: 50%;
+				}
+				
+			}
+			&:last-child{
+				&:after{
+					height: 50%;
+				}
+			}
+			&:after, &:before{
+				content: "";
+				position: absolute;
+				left: 0;
+			}
+			&:after{
+				top: 0;
+				width: 1px;
+				height: 100%;
+				background-color: $debugDarkGrey;
+			}
+
+			&:before{
+				top: 50%;
+				transform: translateY(-50%);
+				width: 20px;
+				height: 1px;
+				background-color: $debugDarkGrey;
+			}
+
+
+		}
+	}
+	
+	.debug-table{
+		width: 100%; 
+		
+		tr, th, td{
+			border: 1px solid $debugVeryLightGrey;
+		}
+		th, td{
+			padding: 10px 15px;
+		}
+	}
+
+	pre.sf-dump, pre.sf-dump .sf-dump-default {
+		&:focus{
+			outline: none;
+		}
+	}
+
+	/*
+	|
+	| Generate classes
+	|-------------------
+	|
+	*/
+	@each $prefix, $value in $debugMap{
+		.color-#{$prefix}{ color: $value; }
+		.bg-#{$prefix}{ background-color: $value; }
+	}
+
+	.font-xs{ font-size: 12px!important; }
+	.font-sm{ font-size: 14px!important; }
+	.font-md{ font-size: 16px!important; }
+	.font-lg{ font-size: 18px!important; }
+	.font-xl{ font-size: 20px!important; }
+
+	.bold{ font-weight: 600; }
+	.regular{ font-weight: 400; }
+
+
+
+	/*
+	|
+	| Text Transform
+	|----------------------------
+	|
+	*/
+	.tt-u{text-transform: uppercase !important}
+	.tt-l{text-transform: lowercase !important}
+	.tt-c{text-transform: capitalize !important}
+
+	/*
+	|
+	| Underline
+	|------------
+	|
+	*/
+	.td-u{text-decoration: underline !important}
+	.td-n{text-decoration: none !important}
+
+	/*
+	|
+	| Font styles
+	|--------------
+	|
+	*/
+	.fs-i{font-style: italic !important}
+	.fs-o{font-style: oblique !important}
+	.fs-n{font-style: normal !important}
+
+	/*
+	|
+	| Background
+	|-------------
+	|
+	*/
+	.bg-cover{
+	  background-size: cover !important;
+	  background-position: center center !important;
+	  background-repeat: no-repeat !important;
+	}
+
+	/*
+	|
+	| Overflows
+	|-------------
+	|
+	*/
+	.o-v{overflow: visible !important;}
+	.ox-v{overflow-x: visible !important;}
+	.oy-v{overflow-y: visible !important;}
+	.o-h{overflow: hidden !important;}
+	.ox-h{overflow-x: hidden !important;}
+	.oy-h{overflow-y: hidden !important;}
+
+	/*
+	|
+	| Positions
+	|-------------
+	|
+	*/
+	.p-r{position: relative !important;}
+	.p-a{position: absolute !important;}
+
+	/*
+	|
+	| Flex Alignment
+	|-----------------
+	|
+	*/
+	.ai-start{ align-items: flex-start; }
+	.ai-end{ align-items: flex-end; }
+	.ai-center{ align-items: center; }
+	.ai-baseline{ align-items: baseline; }
+	.ai-stretch{ align-items: stretch; }
+
+	/*
+	|
+	| Displays
+	|---------------
+	|
+	*/
+	.d-i{ display: inline; }
+	.d-ib{ display: inline-block; }
+	.d-b{ display: block; }
+	.d-f{ display: flex; }
+
+	/*
+	|
+	| Flex Justify
+	|---------------
+	|
+	*/
+	.jc-start{ justify-content: flex-start; }
+	.jc-end{ justify-content: flex-end; }
+	.jc-center{ justify-content: center; }
+	.jc-between{ justify-content: space-between; }
+	.jc-around{ justify-content: space-around; }
+
+
+	$xs :   5px;
+	$sm :   15px;
+	$md :   30px;
+	$lg :   50px;
+	$xl :   70px;
+	$xxl :  140px;
+
+	/*
+	|
+	| Margins & Paddings Maps
+	|--------------------------
+	|
+	*/
+	$spaces: (
+	  '0' : 0,
+	  'xs': $xs,
+	  'sm': $sm,
+	  'md': $md,
+	  'lg': $lg,
+	  'xl': $xl,
+	  'xxl': $xxl
+	);
+
+	$space-properties: (
+	  'm' : 'margin',
+	  'mt': 'margin-top',
+	  'mb': 'margin-bottom',
+	  'my': 'margin-top' 'margin-bottom',
+	  'ml': 'margin-left',
+	  'mr': 'margin-right',
+	  'mx': 'margin-left' 'margin-right',
+	  'p' : 'padding',
+	  'pt': 'padding-top',
+	  'pb': 'padding-bottom',
+	  'py': 'padding-top' 'padding-bottom',
+	  'pl': 'padding-left',
+	  'pr': 'padding-right',
+	  'px': 'padding-left' 'padding-right'
+	);
+
+	/*
+	|
+	| Margins & Paddings
+	|-----------------------
+	|
+	*/
+	@mixin generate-spaces($spaces, $space-properties){
+	  @each $prefix-space, $space in $spaces {
+	    @each $prefix-property, $property in $space-properties{
+	      .#{$prefix-property}-#{$prefix-space}{
+	        @each $property-value in $property{
+	          #{$property-value}: $space !important;
+	        }
+	      }
+	    }
+	  }
+	}
+
+	@include generate-spaces($spaces, $space-properties);
+}

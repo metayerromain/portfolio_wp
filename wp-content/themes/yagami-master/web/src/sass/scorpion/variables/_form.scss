@@ -1,0 +1,292 @@
+/*
+|---------------------------------------------------------------
+| FORMS
+|---------------------------------------------------------------
+| Settings of all bootstrap form elements
+|
+|
+*/
+
+/*
+|
+|
+| LABELS
+|
+|
+|
+| Labels default (.form-group label)
+|-------------------------------------
+|
+*/
+$label-form-control : (
+  margin-bottom:    5px
+);
+
+/*
+|
+| Labels custom for checkbox & radios (.custom-control-description)
+|--------------------------------------------------------------------
+|
+*/
+$label-custom-control : (
+  cursor:    pointer
+);
+
+/*
+|
+| Container (label) of custom checkbox/radio elements (.custom-control)
+|------------------------------------------------------------------------
+|
+*/
+$custom-control : (
+  padding:          0 0 0 25px,
+  margin-bottom:    10px
+);
+
+
+/*
+|
+|
+| INPUTS
+|
+|
+|
+| Inputs default (.form-control)
+|---------------------------------
+|
+*/
+$input-default : (
+  outline:        none !important,
+  box-shadow:     none!important,
+  padding:        7px 10px,
+  border-radius:  0,
+  background:     $white,
+  transition:     all 0.3s
+);
+
+/*
+|
+| Inputs :focus
+|----------------
+|
+*/
+$input-focus : (
+  border-color: $black
+);
+
+/*
+|
+| Inputs :placeholder
+|----------------
+|
+*/
+$input-placeholder : (
+  font-size:    14px,
+  color:        $dark-grey,
+  font-weight:  100
+);
+
+
+/*
+|
+|
+| SELECT
+|
+|
+|
+| Selects default (select.form-control)
+|----------------------------------------
+|
+*/
+
+/*
+|
+| Selects default (select.form-control)
+|--------------------------------------
+|
+*/
+
+$select-default : (
+  outline:              none !important,
+  box-shadow:           none !important,
+  padding:              7px 25px 7px 10px,
+  border-radius:        0,
+  transition:           all 0.3s,
+  background-color:     $white
+);
+
+$select-custom : (
+  outline:              none !important,
+  box-shadow:           none !important,
+  padding:              7px 25px 7px 10px,
+  border-radius:        0,
+  transition:           all 0.3s,
+  background-image:     url('#{$path-img}/icon/bottom.svg'),
+  background-color:     $white,
+  background-size:      10px,
+  background-repeat:    no-repeat,
+  background-position:  calc(100% - 10px) 15px,
+);
+
+/*
+|
+|
+| CHECKBOXES
+|
+|
+|
+| Checkbox default (.custom-checkbox .custom-control-indicator)
+|----------------------------------------------------------------
+|
+*/
+$checkbox-default : (
+  position:         absolute,
+  z-index:          1,
+  display:          inline-block,
+  outline:          none !important,
+  box-shadow:       none !important,
+  border-radius:    0 !important,
+  top:              1px,
+  left:             0,
+  width:            18px,
+  height:           18px,
+  background-color: $white,
+  border:           1px solid $border-color,
+  transition:       all 0.3s
+);
+
+/*
+|
+| Checkbox :checked (.custom-checkbox .custom-control-indicator)
+|-----------------------------------------------------------------
+|
+*/
+$checkbox-indicator : (
+  display:            block,
+  position:           absolute,
+  z-index:            2,
+  left:               2px,
+  top:                3px,
+  width:              14px,
+  height:             14px,
+  border-radius:      0,
+  box-shadow:         none,
+  background-color:   transparent !important,
+  background:         $black !important,
+  background-size:    100%,
+  transform:          scale(0),
+  transition:         all 0.3s
+);
+
+$checkbox-indicator-active : (
+  transform:          scale(1)
+);
+
+
+/*
+|
+|
+| RADIO
+|
+|
+|
+| Radio default (.custom-radio .custom-control-indicator)
+|----------------------------------------------------------
+|
+*/
+$radio-default : (
+  position:           absolute,
+  z-index:            1,
+  display:            inline-block,
+  outline:            none !important,
+  box-shadow:         none !important,
+  border-radius:      50%,
+  top:                1px,
+  left:               0,
+  width:              18px,
+  height:             18px,
+  background-color:   $white,
+  border:             1px solid $border-color,
+  transition:         all 0.3s,
+);
+
+/*
+|
+| Radio :checked (.custom-radio .custom-control-indicator)
+|-----------------------------------------------------------
+|
+*/
+$radio-indicator : (
+  display:            block,
+  position:           absolute,
+  z-index:            2,
+  border-radius:      50%,
+  left:               2px,
+  top:                3px,
+  width:              14px,
+  height:             14px,
+  background:         $black !important,
+  box-shadow:         none !important,
+  transition:         all 0.3s,
+  transform:          scale(0)
+);
+
+$radio-indicator-active : (
+  transform:          scale(1)
+);
+
+
+/*
+|
+|
+| BUTTON TOGGLE
+|
+|
+|
+| Radio default (.custom-radio .custom-control-indicator)
+|----------------------------------------------------------
+|
+*/
+$button-toggle-default : (
+  position:           relative,
+  width:              100%,
+
+);
+
+$button-toggle-hover : (
+  background-color:     $light-grey,
+);
+
+
+$button-toggle-active : (
+  background-color:   $blue,
+  color:              $white
+);
+
+
+/*
+|
+|
+| BLOCK TOGGLE
+|
+|
+|
+| Radio default (.custom-radio .custom-control-indicator)
+|----------------------------------------------------------
+|
+*/
+$block-toggle-default : (
+  position:           relative,
+  width:              100%,
+
+);
+
+$block-toggle-hover : (
+  background-color:     $light-grey,
+);
+
+
+$block-toggle-active : (
+  background-color:   $blue,
+  color:              $white
+);

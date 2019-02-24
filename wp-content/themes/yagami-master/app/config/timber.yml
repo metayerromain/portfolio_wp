@@ -1,0 +1,18 @@
+#------------------------------------------------------
+#                  TIMBER CONFIGURATIONS
+#------------------------------------------------------
+#
+# This file contains all timber configuration
+#
+#
+
+#------------------- Views folder --------------------
+views_location: /views
+
+#------------------- Context --------------------
+context:
+  links:
+    archives:
+      news: post
+    pages:
+      page_exemple: 2

@@ -1,0 +1,154 @@
+/*
+|---------------------------------------------------------------
+| Helpers
+|---------------------------------------------------------------
+| Define helper classes
+|
+|
+*/
+
+/*
+|
+| Rte
+|----------------------------
+|
+*/
+.rte{
+  p{margin-bottom:$sm;}
+  ul, li{list-style: inherit;}
+  strong, b{font-weight: bold;}
+}
+
+/*
+|
+| Text Transform
+|----------------------------
+|
+*/
+.tt-u{text-transform: uppercase !important}
+.tt-l{text-transform: lowercase !important}
+.tt-c{text-transform: capitalize !important}
+
+/*
+|
+| Underline
+|------------
+|
+*/
+.td-u{text-decoration: underline !important}
+.td-n{text-decoration: none !important}
+
+/*
+|
+| Font styles
+|--------------
+|
+*/
+.fs-i{font-style: italic !important}
+.fs-o{font-style: oblique !important}
+.fs-n{font-style: normal !important}
+
+/*
+|
+| Full width mobile
+|--------------------
+|
+*/
+@include media-breakpoint-down(xs) {
+  .xs-down-full {
+    width: 100%;
+  }
+}
+
+/*
+|
+| Background
+|-------------
+|
+*/
+.bg-cover{
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+
+/*
+|
+| Overlays
+|-------------
+|
+*/
+.overlay{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left:0;
+  top:0;
+  z-index:1;
+  background-color: $default-background-overlay;
+
+  + *{
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/*
+|
+| Overflows
+|-------------
+|
+*/
+.o-v{overflow: visible !important;}
+.ox-v{overflow-x: visible !important;}
+.oy-v{overflow-y: visible !important;}
+.o-h{overflow: hidden !important;}
+.ox-h{overflow-x: hidden !important;}
+.oy-h{overflow-y: hidden !important;}
+
+/*
+|
+| Positions
+|-------------
+|
+*/
+.p-r{position: relative !important;}
+.p-a{position: absolute !important;}
+.p-f{position: fixed !important;}
+
+/*
+|
+| Flex Alignment
+|-----------------
+|
+*/
+.ai-start{ align-items: flex-start; }
+.ai-end{ align-items: flex-end; }
+.ai-center{ align-items: center; }
+.ai-baseline{ align-items: baseline; }
+.ai-stretch{ align-items: stretch; }
+
+/*
+|
+| Flex Justify
+|---------------
+|
+*/
+.jc-start{ justify-content: flex-start; }
+.jc-end{ justify-content: flex-end; }
+.jc-center{ justify-content: center; }
+.jc-between{ justify-content: space-between; }
+.jc-around{ justify-content: space-around; }
+
+/*
+|
+| White space
+|--------------
+|
+*/
+.ws-normal{ white-space: normal; }
+.ws-nowrap{ white-space: nowrap; }
+.ws-pre{ white-space: pre; }
+.ws-pre-wrap{ white-space: pre-wrap; }
+.ws-pre-line{ white-space: pre-line; }

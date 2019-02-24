@@ -1,0 +1,42 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	{#
+    |
+    | Section Mangas
+    |---------------
+    #}
+    <section class="py-md">
+        <div class="container">
+            <h1 class="font-bold mb-md">Projects</h1>
+            <hr/>
+
+            {#
+            |
+            | Mangas list
+            |---------------
+            #}
+            <div class="row">
+                {% for key, value in posts %}
+                    <div class="col-sm-4">
+                        {{ global.card({
+                            'image': img ~ '/global/bg-default-2.jpg',
+                            'title': value.title,
+                            'date': value.date|date('F Y')|capitalize,
+                            'content': value.content|truncate(5, true),
+                            'link': value.link,
+                            'terms': value.terms('genres')
+                        }) }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {#
+            |
+            | Pagination
+            |-------------
+            #}
+            {{ global.pagination({ 'pagination': posts.pagination }) }}
+        </div>
+    </section>    
+{% endblock %}

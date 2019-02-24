@@ -1,0 +1,42 @@
+#-------------------------------------------------------
+#                    CPT DECLARATION
+#-------------------------------------------------------
+#
+# To add a CPT, copy and paste the CPT config below, 
+# and replace with the right datas
+#
+#
+
+#--------------------- Projects ----------------------
+projects:
+  registration:
+    labels:
+      name: Projects
+      singular_name: Project
+      add_new: Ajouter un project
+      add_new_item: Ajouter project
+      edit_item: Modifier project
+      new_item: Nouveau
+      all_items: Tous les projects
+      view_item: Voir l'élément
+      search_item: Rechercher un project
+      not_found: Aucun project
+      not_fonud_in_trash: Aucun project trouvé dans la corbeille
+      menu_name: Projects
+    public: true
+    publicly_queryable: true
+    show_ui: true
+    show_in_menu: true
+    query_var: projects
+    rewrite:
+      slug: projects
+    capability_type: post
+    has_archive: true
+    hierarchical: false
+    menu_position: 5
+    menu_icon: dashicons-admin-site
+    exclude_from_search: false
+    supports: 
+      - title
+      - editor
+      - thumbnail

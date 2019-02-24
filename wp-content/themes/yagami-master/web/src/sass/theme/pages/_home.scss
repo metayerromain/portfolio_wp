@@ -1,0 +1,16 @@
+.homepage{
+    height: 100vh;
+    .block-title{
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .img-container{
+        opacity: 0;
+        position: relative;
+    }
+}

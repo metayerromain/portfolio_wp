@@ -1,0 +1,41 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+	{#
+    |
+    | Section news
+    |---------------
+    #}
+    <section class="py-md">
+        <div class="container">
+            <h1 class="font-bold mb-md">Search </h1>
+            <hr/>
+
+            {#
+            |
+            | News list
+            |---------------
+            #}
+            <div class="row">
+                <div class="col-sm-4">
+                    {% for key, value in posts %}
+                        {{ global.card({
+                            'image': img ~ '/global/bg-default-2.jpg',
+                            'title': value.title,
+                            'date': value.date|date('F Y')|capitalize,
+                            'content': value.content|truncate(5, true),
+                            'link': value.link
+                        }) }}
+                    {% endfor %}
+                </div>
+            </div>
+
+            {#
+            |
+            | Pagination
+            |-------------
+            #}
+            {{ global.pagination({ 'pagination': posts.pagination }) }}
+        </div>
+    </section>
+{% endblock %}

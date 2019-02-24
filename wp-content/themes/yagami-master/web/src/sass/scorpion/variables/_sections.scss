@@ -1,0 +1,21 @@
+/*
+|---------------------------------------------------------------
+| SECTIONS
+|---------------------------------------------------------------
+| Generate responsive sections
+|
+|
+*/
+
+/*
+|-------------------
+| Sections setting
+|-------------------
+| - Generated class: .section
+|
+*/
+$section-padding :             70px;
+$screen-lg-section-padding :   $section-padding;
+$screen-md-section-padding :   $section-padding;
+$screen-sm-section-padding :   $section-padding;
+$screen-xs-section-padding :   30px;

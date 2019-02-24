@@ -1,0 +1,24 @@
+/*
+|---------------------------------------------------------------
+| SPACES
+|---------------------------------------------------------------
+| Margins and paddings
+|
+|
+*/
+
+/*
+|--------------
+| Space sizes
+|--------------
+| Variables used to generate magins & paddings classes (including responsive)
+| - Normal classes: .{property}-{size} / .mb-md / margin-bottom: $md  
+| - Responsive classes: .{screen}-{up/down/only}-{property}-{size} / .md-down-mb-md /  (max-width: 992px) { margin-bottom: $md }
+|
+*/
+$xs :   5px;
+$sm :   15px;
+$md :   30px;
+$lg :   50px;
+$xl :   70px;
+$xxl :  140px;

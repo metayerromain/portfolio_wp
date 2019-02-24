@@ -1,0 +1,66 @@
+/*
+|---------------------------------------------------------------
+| CLASS GENERATOR
+|---------------------------------------------------------------
+| Mixins calls to generate classes
+|
+|
+*/
+
+/*------- DISPLAY -------*/
+@include generate-hidden-classes($screen-sizes-only, $screen-sizes-down, $screen-sizes-up);
+
+/*------- FONT-SIZES -------*/
+@include generate-font-sizes($font-sizes);
+
+/*------- TITLES -------*/
+@include generate-titles($title-sizes);
+
+/*------- FONT-FAMILY -------*/
+@include generate-class-from-map($font-families, 'ff', font-family);
+
+/*------- FONT-WEIGHTS -------*/
+@include generate-class-from-map($font-weights, 'fw', font-weight);
+
+/*------- LINE-HEIGHTS -------*/
+@include generate-class-from-map($line-heights, 'lh', line-height);
+
+/*------- COLORS -------*/
+@include generate-class-from-map($colors, 'c', color);
+
+/*------- LINKS -------*/
+@include generate-links($links-colors);
+
+/*------- BUTTONS -------*/
+@include generate-buttons($button-sizes, $button-colors, $button-default);
+
+/*------- BLOCKS -------*/
+@include generate-blocks($block-colors, $block-default);
+
+/*------- BACKGROUND-COLORS -------*/
+@include generate-class-from-map($colors, 'bg', background-color);
+
+/*------- TEXT-ALIGN -------*/
+@include generate-class-from-map($align-types, 'ta', text-align);
+@include generate-text-alignments($align-types, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up);
+
+/*------- LETTER SPACING -------*/
+@include generate-class-from-map($letter-spacings, 'ls', letter-spacing);
+
+/*------- MIN HEIGHT -------*/
+@include generate-class-from-map($min-heights, 'mh', min-height);
+@include generate-min-heights($min-heights, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up);
+
+/*------- DISPLAYS -------*/
+@include generate-class-from-map($displays, 'd', display);
+@include generate-screen-displays($displays, $screen-sizes-only, $screen-sizes-down, $screen-sizes-up);
+
+/*------- SECTIONS -------*/
+@include generate-sections($sections);
+
+/*------- MARGINS & PADDINGS -------*/
+@include generate-spaces($spaces, $space-properties);
+@include generate-spaces-child($spaces, $space-properties);
+@include generate-screen-spaces('down', $screen-sizes-down, $spaces, $space-properties);
+@include generate-screen-spaces('up', $screen-sizes-up, $spaces, $space-properties);
+@include generate-screen-spaces('only', $screen-sizes-only, $spaces, $space-properties);

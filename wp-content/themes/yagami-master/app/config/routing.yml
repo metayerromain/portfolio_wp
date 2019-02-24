@@ -1,0 +1,80 @@
+#-------------------------------------------------------
+#                  ROUTES CONFIGURATION
+#-------------------------------------------------------
+#
+# To create a route: 
+# - Read the list of template conditions below
+# - Select the condition which targets the type of template you want to display
+# - Then under that condition you can:
+#   - Specify the default controller with the method to execute. / EX: is_single: { default: { controller: NewsController::Single } }
+#   - Specify a controller::method for a specific use-case.      / EX: is_single: { my-article: { controller: NewsController::myArticle }
+#
+#
+
+#--------------------- Home Page ----------------------
+is_front_page:
+  default:
+    controller: PageController::home
+
+
+#--------------------- Attachment ---------------------
+is_attachment:
+  default:
+    controller: WhateverController::attachment
+
+
+#-------------------- Posts Pages ---------------------
+is_home:
+  default:
+    controller: NewsController::archive
+
+is_single:
+  un-article-specifique:
+    controller: NewsController::articleSpecifique
+  default:
+    controller: NewsController::single
+
+is_category:
+  default:
+    controller: NewsController::category
+
+is_tag:
+  default:
+    controller: NewsController::tag
+
+
+#---------------------- Pages -----------------------
+is_page:
+  page-specifique:
+    controller: PageController::pageSpecifique
+  page-d-exemple:
+    controller: PageController::pageExemple
+  page-projects:
+    controller: PageController::pageProjects
+  page-home:
+    controller: PageController::home
+  default:
+    controller: PageController
+
+  
+
+#------------------- Types of Page ------------------
+is_search:
+  default:
+    controller: WhateverController::search
+
+is_author:
+  default:
+    controller: WhateverController::author
+
+is_date:
+  default:
+    controller: WhateverController::date
+
+is_archive:
+  default:
+    controller: WhateverController::index
+
+is_404:
+  default:
+    controller: PageController::page404

@@ -1,0 +1,32 @@
+#-------------------------------------------------------
+#                 TAXONOMIES DECLARATION
+#-------------------------------------------------------
+#
+# To add a tanonomy, copy and paste the taxonomy config below, 
+# and replace with the right datas
+#
+#
+
+#--------------------- Types ----------------------
+types:
+  posts:
+    - projects
+  registration:
+    labels:
+      name: Types 
+      singular_name: Type
+      menu_name: Types
+      all_items: Tous les types
+      edit_item: Modifier un type
+      update_item: Mettre à jour
+      add_new_item: Ajouter un type
+      search_items: Rechercher un type
+      new_item_name: Nouveau libellé du type
+      not_found: Aucun type trouvé
+    public: true
+    publicly_queryable: true
+    hierarchical: true
+    query_var: true
+    rewrite: 
+      slug: type
+    show_admin_column: true

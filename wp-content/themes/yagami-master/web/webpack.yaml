@@ -1,0 +1,61 @@
+#-------------------------------------------------------
+#                 WEBPACK CONFIGURATION
+#-------------------------------------------------------
+#
+# Configuration for webpack.js file
+#
+#
+
+#--------------------- BrowserSync ----------------------
+browserSync:
+  use: true
+  proxy: http://portfolio.local:8888/
+  watch:
+    - ../views/**/*.twig
+    - ../controllers/*.php
+
+#--------------------- Code Linters ---------------------
+linters:
+  scss: false
+  js: false
+
+#--------------------- Entry Points ---------------------
+entry_points:
+  app:
+    - swiper/dist/css/swiper.min.css
+    - ./src/lib/iziModal/css/iziModal.min.css
+    - ./src/sass/app.scss
+    - ./src/js/app.js
+  debug_tool:
+    - ./src/debug-tool/js/debug-tool.js
+    - ./src/debug-tool/scss/debug-tool.scss
+
+#------------------------ Output -----------------------
+output:
+  path: './dist/js'
+  resources:
+    css: '../css'
+    img: '../img'
+    fonts: '../fonts'
+
+
+#------------------------ Clean ------------------------
+clean:
+  root: './'
+  folders: 
+    - dist
+
+
+#------------------------ Aliases ----------------------
+alias:
+  '@src': './src'
+
+
+#-------------------- Global plugins -------------------
+global_plugins:
+  $: jquery
+  jQuery: jquery
+
+
+#-------------------- Notifier Logo ------------------
+notifier_logo_path: src/img/logo/mkx.png

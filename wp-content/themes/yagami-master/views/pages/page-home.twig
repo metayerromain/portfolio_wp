@@ -1,0 +1,32 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div id="page-home">
+        <section class="homepage background">
+            <div class="container block-title">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="block-title-inner">
+                            {% for item in post.get_field('homepage') %}
+                                <div class="title title-xxl ls-xl font-default tt-u" data-id="{{loop.index}}">
+                                    <a class="link" href="{{item.title.url}}">{{item.title.title}}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row h-100 no-gutters">
+                {% for item in post.get_field('homepage') %}
+                    <div class="col-lg-4">
+                        <div class="block-container" data-col="{{loop.index}}">
+                            <div class="img-container h-100" data-img={{item.image.url}} data-id="{{loop.index}}">
+                                {# <div class="bg-cover h-100" style="background: url('{{item.image.url}}');"></div> #}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

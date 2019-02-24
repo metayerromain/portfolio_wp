@@ -1,0 +1,37 @@
+/*
+|---------------------------------------------------------------
+| BLOCKS
+|---------------------------------------------------------------
+| Generate blocks of content
+|
+|
+*/
+
+/*
+|
+| Block base default
+|---------------------
+|
+*/
+$block-default : (
+  display :         block,
+  padding :         30px 30px,
+  position :        relative,
+  background:       $white,
+  border-radius:    0
+);
+
+
+/*
+|------------------
+| Blocks creation
+|------------------
+| - How to use: $block-colors: map-set-blocks($map, $block-color, $background-color, $text-color)
+| - Generated classes: .block-{color}
+|
+*/
+$block-colors: ();
+$block-colors: map-set-blocks($block-colors, 'white-opacity', $white-opacity, $white);
+$block-colors: map-set-blocks($block-colors, 'white-opacity', $white-opacity, $white);
+
+

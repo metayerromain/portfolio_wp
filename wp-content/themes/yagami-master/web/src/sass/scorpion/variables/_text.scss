@@ -1,0 +1,192 @@
+/*
+|---------------------------------------------------------------
+| TEXTS
+|---------------------------------------------------------------
+| Set all text properties
+|
+|
+*/
+
+/*
+|
+|
+| FONT-SIZES
+|
+|
+|----------------------------------------------
+| Font sizes settings (for each screen sizes)
+|----------------------------------------------
+| Variables used to generate font classes (including responsive)
+| - Generated classes: .font-{size}
+| - Exemple: .font-md
+|
+*/
+$font-size-xs :             12px;
+$screen-lg-font-size-xs :   $font-size-xs;
+$screen-md-font-size-xs :   $font-size-xs;
+$screen-sm-font-size-xs :   $font-size-xs;
+$screen-xs-font-size-xs :   $font-size-xs;
+
+$font-size-sm :             14px;
+$screen-lg-font-size-sm :   $font-size-sm;
+$screen-md-font-size-sm :   $font-size-sm;
+$screen-sm-font-size-sm :   $font-size-sm;
+$screen-xs-font-size-sm :   $font-size-sm;
+
+$font-size-md :             16px;
+$screen-lg-font-size-md :   $font-size-md;
+$screen-md-font-size-md :   $font-size-md;
+$screen-sm-font-size-md :   $font-size-md;
+$screen-xs-font-size-md :   $font-size-md;
+
+$font-size-lg :             22px;
+$screen-lg-font-size-lg :   $font-size-lg;
+$screen-md-font-size-lg :   $font-size-lg;
+$screen-sm-font-size-lg :   $font-size-lg;
+$screen-xs-font-size-lg :   $font-size-lg;
+
+$font-size-xl :             34px;
+$screen-lg-font-size-xl :   $font-size-xl;
+$screen-md-font-size-xl :   $font-size-xl;
+$screen-sm-font-size-xl :   $font-size-xl;
+$screen-xs-font-size-xl :   $font-size-xl;
+
+$font-size-xxl :            50px;
+$screen-lg-font-size-xxl :  $font-size-xxl;
+$screen-md-font-size-xxl :  $font-size-xxl;
+$screen-sm-font-size-xxl :  $font-size-xxl;
+$screen-xs-font-size-xxl :  $font-size-xxl;
+
+
+/*
+|
+|
+| TITLE-SIZES
+|
+|
+|-----------------------------------------------
+| Title sizes settings (for each screen sizes)
+|-----------------------------------------------
+| Variables used to generate title classes (including responsive)
+| - Generated classes: .title-{size}
+| - Exemple: .title-md
+|
+*/
+$font-size-title-xs :             16px;
+$screen-lg-font-size-title-xs :   $font-size-title-xs;
+$screen-md-font-size-title-xs :   $font-size-title-xs;
+$screen-sm-font-size-title-xs :   $font-size-title-xs;
+$screen-xs-font-size-title-xs :   $font-size-title-xs;
+
+$font-size-title-sm :             18px;
+$screen-lg-font-size-title-sm :   $font-size-title-sm;
+$screen-md-font-size-title-sm :   $font-size-title-sm;
+$screen-sm-font-size-title-sm :   $font-size-title-sm;
+$screen-xs-font-size-title-sm :   $font-size-title-sm;
+
+$font-size-title-md :             24px;
+$screen-lg-font-size-title-md :   $font-size-title-md;
+$screen-md-font-size-title-md :   $font-size-title-md;
+$screen-sm-font-size-title-md :   $font-size-title-md;
+$screen-xs-font-size-title-md :   $font-size-title-md;
+
+$font-size-title-lg :             36px;
+$screen-lg-font-size-title-lg :   $font-size-title-lg;
+$screen-md-font-size-title-lg :   $font-size-title-lg;
+$screen-sm-font-size-title-lg :   $font-size-title-lg;
+$screen-xs-font-size-title-lg :   $font-size-title-lg;
+
+$font-size-title-xl :             50px;
+$screen-lg-font-size-title-xl :   $font-size-title-xl;
+$screen-md-font-size-title-xl :   $font-size-title-xl;
+$screen-sm-font-size-title-xl :   $font-size-title-xl;
+$screen-xs-font-size-title-xl :   $font-size-title-xl;
+
+$font-size-title-xxl :            64px;
+$screen-lg-font-size-title-xxl :  $font-size-title-xxl;
+$screen-md-font-size-title-xxl :  $font-size-title-xxl;
+$screen-sm-font-size-title-xxl :  $font-size-title-xxl;
+$screen-xs-font-size-title-xxl :  $font-size-title-xxl;
+
+
+/*
+|
+| FONT-FAMILIES
+|----------------
+|
+*/
+$font-family-default :    'montserrat', sans-serif;
+$font-family-custom :     'butler', sans-serif;
+$font-family-extra :      'Arial', sans-serif;
+
+
+/*
+|-------------------------------
+| Font family classes creation
+|-------------------------------
+| How to use: add lines to create more "font family classes" 
+| - Generated classes: .font-{family}
+| - Exemple: .font-custom
+|
+*/
+$font-families: (
+  'default':    $font-family-default,
+  'custom':     $font-family-custom,
+  'extra':      $font-family-extra
+);
+
+
+/*
+|-----------------
+| LETTER-SPACING
+|-----------------
+| Variables used to generate letter-spacing classes
+| - Generated classes: .ls-{size}
+| - Exemple: .ls-md
+|
+*/
+$letter-spacing-xs:   1px;
+$letter-spacing-sm:   2px;
+$letter-spacing-md:   3px;
+$letter-spacing-lg:   4px;
+$letter-spacing-xl:   5px;
+$letter-spacing-xxl:  6px;
+
+
+/*
+|
+| LINE-HEIGHT
+|--------------
+|
+*/
+$line-height-xs :   1;
+$line-height-sm :   1.2;
+$line-height-md :   1.5;
+$line-height-lg :   1.6;
+$line-height-xl :   1.8;
+$line-height-xxl :  2;
+
+
+/*
+|
+| Default font settings
+|------------------------
+|
+*/
+$default-font-size:             $font-size-md;
+$default-color:                 $text-color;
+$default-line-height:           $line-height-md;
+$default-font-weight: 			    100;
+
+
+/*
+|
+| Default titles settings
+|--------------------------
+|
+*/
+$default-titles : (
+  color:          inherit,
+  font-family:    $font-family-custom,
+  font-weight:    500
+);

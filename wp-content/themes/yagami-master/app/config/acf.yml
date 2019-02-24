@@ -1,0 +1,36 @@
+#------------------------------------------------------
+#                     ACF OPTIONS
+#------------------------------------------------------
+#
+# This file allows to manage ACF options pages
+#
+#
+
+#---------------- Google Api Key ----------------
+google_map_api_key: AIzaSyDGF98psyVSiyiVhFovqfhMDrGJ-Ls2Uoc
+
+
+#------------------- Options --------------------
+options:
+  options_page:
+    page: 
+      page_title: Page d'options 1
+      menu_title: Options 1
+      menu_slug: options-1
+      capability: edit_posts
+    sub_menus:
+      - { page_title: Configuration P1 Sub Menu 1, menu_title: Sub Menu 1 }
+      - { page_title: Configuration P1 Sub Menu 2, menu_title: Sub Menu 2 }
+      - { page_title: Configuration P1 Sub Menu 3, menu_title: Sub Menu 3 }
+
+
+  options_page_2:
+    page: 
+      page_title: Page d'options 2
+      menu_title: Options 2
+      menu_slug: options-2
+      capability: edit_posts
+    sub_menus:
+      - { page_title: Configuration P2 Sub Menu 1, menu_title: Sub Menu 2 1 }
+      - { page_title: Configuration P2 Sub Menu 2, menu_title: Sub Menu 2 2 }
+      - { page_title: Configuration P2 Sub Menu 3, menu_title: Sub Menu 2 3 }

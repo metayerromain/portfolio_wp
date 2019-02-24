@@ -1,0 +1,61 @@
+/*
+|---------------------------------------------------------------
+| Functions
+|---------------------------------------------------------------
+| Functions used to add classes to generation
+|
+|
+*/
+
+/*
+|
+| Add Buttons
+|-----------------------
+|
+*/
+@function map-set-buttons($map, $index, $bg-color, $border-color, $text-color) {
+  $new: (
+    $index : (
+      'background-color':   $bg-color,
+      'border-color':       $border-color,
+      'color':              $text-color,
+    )
+  );
+
+  @return map-merge($map, $new);
+}
+
+/*
+|
+| Add Blocks
+|-----------------------
+|
+*/
+@function map-set-blocks($map, $index, $bg-color, $text-color) {
+  $new: (
+    $index : (
+      'background-color':   $bg-color,
+      'color':              $text-color,
+    )
+  );
+
+  @return map-merge($map, $new);
+}
+
+
+/*
+|
+| Add Links
+|-----------------------
+|
+*/
+@function map-set-links($map, $index, $color, $color-hover) {
+  $new: (
+    $index : (
+      'color': $color,
+      'hover': $color-hover,
+    )
+  );
+
+  @return map-merge($map, $new);
+}

@@ -1,0 +1,179 @@
+/**
+|-------------------------------------
+|            SUBZERO CSS
+|-------------------------------------
+|
+| CSS base for SubZero library
+|
+*/
+
+/**
+|
+| Onload, hide "fadeIn" TweenItems
+|-----------------------------------
+|
+*/
+[data-gsap-on='load']{
+  &[data-gsap-effect^='fadeIn'], 
+  &[data-gsap-shortcut^='fadeIn']{
+    opacity: 0;
+  }
+
+  &[data-gsap-effect^='scaleInUp'], [data-gsap-effect^='scaleInUp'],
+  &[data-gsap-effect^='scaleInDown'], [data-gsap-effect^='scaleInDown'],
+  &[data-gsap-shortcut^='scaleInUp'], [data-gsap-shortcut^='scaleInUp'],
+  &[data-gsap-shortcut^='scaleInDown'], [data-gsap-shortcut^='scaleInDown']{
+    transform: scaleY(0);
+  }
+
+  &[data-gsap-effect^='scaleInLeft'], [data-gsap-effect^='scaleInLeft'],
+  &[data-gsap-effect^='scaleInRight'], [data-gsap-effect^='scaleInRight'],
+  &[data-gsap-shortcut^='scaleInLeft'], [data-gsap-shortcut^='scaleInLeft'],
+  &[data-gsap-shortcut^='scaleInRight'], [data-gsap-shortcut^='scaleInRight']{
+    transform: scaleX(0);
+  }
+
+}
+
+[data-gsap-on='load']{
+  [data-gsap-effect^='fadeIn'], 
+  [data-gsap-shortcut^='fadeIn']{
+    &[data-gsap-item]{
+      &:not([data-gsap-splitText]){
+        opacity: 0;
+      }
+
+      &[data-gsap-splitText]{
+        opacity: 0;
+
+        &[data-gsap-splitText='chars']{
+          & > div{
+            & > div{
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
+        }
+
+        &[data-gsap-splitText='words']{
+          & > div{
+            opacity: 0;
+            visibility: hidden;
+            & > div{
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+|
+| Disable CSS transitions 
+|--------------------------
+|
+*/
+[data-gsap-on],
+[data-gsap-timeline],
+[data-gsap-item],
+[data-gsap-stagger-item]{
+  //transition: none!important;
+}
+
+
+/* 
+* Entrance container hidden (when animate self)
+*/
+// [data-gsap-on='load']{
+//   opacity: 0;
+  
+//   /* Stagger container must be visible */
+//   &[data-gsap-stagger='true']{
+//     opacity: 1;
+    
+//     /* Stagger items must be hidden */
+//     [data-gsap-stagger-item]{
+//       opacity: 0;
+//     }
+//   }
+  
+//   /* 
+//   * Entrance container visible (when it's timeline, only childs are hidden)
+//   */
+//   &[data-gsap-timeline="true"]{
+//     opacity: 1;
+//     [data-gsap-item]{
+//       opacity: 0;
+//       &:not([data-gsap-effect^='fade']){
+//         opacity: 1;
+//       }
+//       &[data-gsap-stagger]{
+//         opacity: 1;
+//         [data-gsap-stagger-item]{
+//           opacity: 0;
+//         }
+//       }
+//       &[data-gsap-splittext]{
+//         opacity: 0;
+//         /* 
+//         * Manage apparition of splittext
+//         */
+//         &[data-gsap-splittext="words"]{
+//           div{
+//             opacity: 0;
+//             visibility: hidden;
+//             div{
+//               opacity: 1;
+//               visibility: visible;
+//             }
+//           }
+//         }
+//         &[data-gsap-splittext="chars"]{
+//           div{
+//             div{
+//               opacity: 0;
+//               visibility: hidden;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+// /* 
+// * Hide Fade elements by default
+// */
+// [data-gsap-effect^='fade']{
+//   opacity: 0;
+//   &[data-gsap-stagger]{
+//     opacity: 1;
+
+//     [data-gsap-stagger-item]{
+//       opacity: 0;
+//     }
+//   }
+// }
+
+// [data-gsap-effect='openX']{
+//   width: 0;
+//   overflow: hidden;
+// }
+
+
+/* 
+* disable css transitions on all animated elements
+*/
+[data-gsap-animate-on='entrance'],
+[data-gsap-animate-on='scroll'],
+[data-gsap-button='true'],
+[data-gsap-item], 
+[data-gsap-stagger-item]{
+  transition: none!important;
+}
+
+

@@ -1,0 +1,76 @@
+/*
+|---------------------------------------------------------------
+| BUTTONS
+|---------------------------------------------------------------
+| Generate and set buttons
+|
+|
+*/
+
+/*
+|
+| Buttons base default
+|----------------------
+|
+*/
+$button-default-padding-y :   10px;
+$button-default-padding-x :   35px;
+$button-default-font-size :   14px;
+$button-default-icon-width :  30px;
+$button-default-icon-height : 20px;
+$button-default-icon-space :  10px;
+
+$button-default : (
+  position :        relative,
+  font-family :     $font-family-custom,
+  display :         inline-block,
+  padding :         $button-default-padding-y $button-default-padding-x,
+  font-size :       $button-default-font-size,
+  background:       $white,
+  color:            $text-color,
+  border:           1px solid $light-grey,
+  border-radius:    0,
+  transition:       all 0.3s,
+  box-shadow:       none !important,
+  white-space:      inherit,
+  cursor:           pointer
+);
+
+/*
+|
+| Buttons size setting
+|-----------------------
+|
+*/
+$button-xs-padding-y :    2px;
+$button-xs-padding-x :    5px;
+$button-xs-font-size :    10px;
+$button-xs-icon-width :   10px;
+
+$button-sm-padding-y :    5px;
+$button-sm-padding-x :    10px;
+$button-sm-font-size :    14px;
+$button-sm-icon-width :   20px;
+
+$button-md-padding-y :    10px;
+$button-md-padding-x :    20px;
+$button-md-font-size :    16px;
+$button-md-icon-width :   30px;
+
+$button-lg-padding-y :    20px;
+$button-lg-padding-x :    30px;
+$button-lg-font-size :    20px;
+$button-lg-icon-width :   50px;
+
+
+/*
+|-------------------
+| Buttons creation
+|-------------------
+| - How to use: $button-colors: map-set-buttons($map, $index, $background-color, $border-color, $text-color)
+| - Generated classes: .btn-{size}, .btn-{color}, .btn-icon-{direction}.
+|
+*/
+$button-colors: ();
+$button-colors: map-set-buttons($button-colors, 'black', $black, $black, $white);
+$button-colors: map-set-buttons($button-colors, 'white', $white, $white, $black);

@@ -1,0 +1,46 @@
+#------------------------------------------------------
+#            Wordpress Theme Configuration
+#------------------------------------------------------
+#
+# This file contains all the wordpress theme setup
+#
+#
+
+#------------------- Admin bar ---------------------
+show_admin_bar: false
+
+#------------------- Query Vars --------------------
+query_vars:
+  - custom_var_1
+  - custom_var_2
+  - custom_var_3
+  - custom_var_4
+  - custom_var_5
+
+
+#----------------- Theme supports ------------------
+theme_supports:
+  - title-tag
+  - post-formats
+  - post-thumbnails
+  - menus
+  - { support: html5, arg: [comment-list, comment-form, search-form, gallery, caption] }
+
+
+#---------------------- Menu -----------------------
+menus:
+  primary: Menu Principal
+  secondary: Menu Secondaire
+
+
+#----------------- Remove features -----------------
+remove_action:
+  wp_head: wp_generator
+
+
+#------------------- Image size --------------------
+images_sizes:
+  square_sm:
+    w: 300
+    h: 300
+    crop: ['center', 'center']

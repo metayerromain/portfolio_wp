@@ -1,0 +1,323 @@
+{#
+|
+| Debug Macros
+|-------------
+#}
+{% import '_debug-tool/macros.twig' as debugMacro %}
+
+{#
+|
+| Debug Tool
+|-------------
+#}
+<div id="debug-tool" class="retracted">
+	{#
+    |
+    | Toolbar
+    |---------
+    #}
+	<div class="toolbar">
+		<div class="shortcuts">
+			<a href="#" class="btn-toolbar btn-expand"
+				data-default-icon="fa-long-arrow-up" 
+				data-active-icon="fa-times">
+				<i class="fal fa-long-arrow-up"></i>
+			</a>
+		</div>
+		<a class="btn-toolbar btn-retract" href="#" 
+			data-default-icon="fa-times" 
+			data-active-icon="fa-long-arrow-left">
+				<i class="fal fa-long-arrow-left"></i>
+		</a>
+	</div>
+
+	{#
+    |
+    | Body
+    |-------
+    #}
+	<div class="body">
+		{#
+	    |
+	    | Header
+	    |---------
+	    #}
+		<div class="header">
+			<div class="container-fluid">
+				<div class="font-md mb-xs">http: //{{ globals.server.HTTP_HOST }}{{ globals.server.REQUEST_URI }}</div>
+				<div class="d-f font-xs">
+					<div class="mr-md">
+						<span class="bold">Entry point: </span> 
+						<span class="">{{ logs.router.resolve.entry_point }}</span>
+					</div>
+					<div class="mr-md">
+						<span class="bold">Router detection: </span> 
+						<span class="">{{ logs.router.resolve.is_template }}({{ logs.router.resolve.is_template_args }})</span>
+					</div>
+					<div class="mr-md">
+						<span class="bold">Controller: </span>
+						<span class="">
+							{{ logs.router.controller.name }}
+							<i class="fal fa-long-arrow-right"></i>
+							{{ logs.router.method }}()
+						</span>
+					</div>
+					<div class="mr-md">
+						<span class="bold">View: </span>
+						<span class="">{{ logs.view }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		{#
+	    |
+	    | Content
+	    |----------
+	    #}
+		<div class="content">
+			{#
+		    |
+		    | Nav
+		    |------
+		    #}
+			<nav class="sidebar">
+				<ul>
+					<li>
+						<a class="active" href="#resolver">
+							<i class="fal fa-retweet"></i>
+							<span>Resolver</span>
+						</a>
+					</li>
+					<li>
+						<a href="#post">
+							<i class="fal fa-table"></i>
+							<span>TimberPost</span>
+						</a>
+					</li>
+					<li>
+						<a href="#controller">
+							<i class="fal fa-table"></i>
+							<span>Controller</span>
+						</a>
+					</li>
+					<li>
+						<a href="#timber">
+							<i class="fas fa-tree"></i>
+							<span>Base Context</span>
+						</a>
+					</li>
+					<li>
+						<a href="#timber_custom">
+							<i class="fas fa-tree"></i>
+							<span>Custom Context</span>
+						</a>
+					</li>
+					<li>
+						<a href="#globals">
+							<i class="fal fa-cogs"></i>
+							<span>Variables</span>
+						</a>
+					</li>
+					<li>
+						<a href="#user">
+							<i class="fal fa-user"></i>
+							<span>User</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			{#
+		    |
+		    | Core
+		    |-------
+		    #}
+		    <div class="core">
+		    	{#
+			    |
+			    | Resolver
+			    |----------
+			    #}
+		    	<div class="toggle-content" id="resolver">
+		    		<h3 class="">Resolver scheme</h3>
+		    		<hr>
+		    		<div class="bg-almost-white p-sm mb-sm">
+		    			<div class="d-f bold">
+		    				<div class="mr-md">
+			    				<span class="color-red">Router Condition</span>:
+			    				{{ logs.router.resolve.is_template }}({{ logs.router.resolve.is_template_args }})
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red">Controller</span>:
+			    				{{ logs.router.controller.path }}
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red">Method</span>:
+			    				{{ logs.router.method }}()
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red">View</span>:
+			    				{{ logs.view }}
+			    			</div>
+		    			</div>
+		    		</div>
+
+		    		<ul class="debug-list">
+		    			<li>
+		    				Request resolved at 
+		    				<span class="color-red bold">{{ logs.router.resolve.entry_point }}</span>
+		    				which launches the <span class="color-red bold">AppKernel</span>.
+		    			</li>
+		    			<li>
+		    				AppKernel registers all Managers and the <span class="color-red bold">App\Managers\RoutingManager</span>.
+		    			</li>
+		    			<li>
+		    				The <span class="color-red bold">Router</span> resolve the template condition 
+		    				<span class="color-red bold">{{ logs.router.resolve.is_template }}({{ logs.router.resolve.is_template_args }})</span>.
+		    			</li>
+		    			<li>
+		    				{% if logs.router.resolve.is_page_template %}
+		    					The Router retrieves the routing configuration in the template declaration file 
+		    					<span class="color-red bold">{{ logs.router.resolve.configuration_file }}</span>
+		    				{% else %}
+		    					The Router retrieves the routing configuration in <span class="color-red bold">{{ logs.router.resolve.configuration_file }}</span> file
+		    				{% endif %}
+		    				
+		    			</li>
+		    			<li>
+		    				The Router calls
+		    				<span class="color-red bold">{{ logs.router.controller.name }}()</span> 
+		    				<i class="fal fa-long-arrow-right color-red"></i>
+		    				<span class="color-red bold">{{ logs.router.method }}()</span>
+		    				which renders the template
+		    				<span class="color-red bold">{{ logs.view }}</span>
+		    			</li>
+		    		</ul>
+		    	</div>
+
+		    	{#
+			    |
+			    | Controller
+			    |-----------------
+			    #}
+		    	<div class="toggle-content" id="controller">
+		    		<h3>{{ logs.router.controller.name }}</h3>
+		    		<hr>
+
+		    		<h4 class="color-red">Controller</h4>
+		    		<table class="debug-table mt-sm mb-md">
+						<tbody>
+							<tr>
+								<td class="color-red">path</td>
+								<td>{{ logs.router.controller.path }}</td>
+							</tr>
+							<tr>
+								<td class="color-red">abs_path</td>
+								<td>{{ logs.router.controller.abs_path }}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4 class="color-red">Render</h4>
+		    		<table class="debug-table mt-sm mb-md">
+						<tbody>
+							<tr>
+								<td class="color-red">view</td>
+								<td>{{ logs.view }}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h4 class="color-red mb-sm">Datas</h4>
+
+					{{ dump(logs.datas) }}				    		
+					
+		    	</div>
+
+		    	{#
+			    |
+			    | TimberPost
+			    |------------
+			    #}
+		    	<div class="toggle-content" id="post">
+		    		<h3>TimberPost</h3>
+		    		<hr>
+		    		<div class="bg-almost-white p-sm mb-sm">
+		    			<div class="d-f bold">
+		    				<div class="mr-md">
+			    				<span class="color-red bold">ID</span>:
+			    				{{ logs.post.ID }}
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red bold">post_type</span>:
+			    				{{ logs.post.post_type }}
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red bold">slug</span>:
+			    				{{ logs.post.slug }}
+			    			</div>
+			    			<div class="mr-md">
+			    				<span class="color-red bold">post_name</span>:
+			    				{{ logs.post.post_name }}
+			    			</div>
+							<div class="mr-md">
+			    				<span class="color-red bold">post_title</span>:
+			    				{{ logs.post.post_title }}
+			    			</div>
+		    			</div>
+		    		</div>
+		    		<div class="container-fluid px-0">
+						{{ dump(logs.post) }}
+		    		</div>
+		    	</div>
+
+		    	{#
+			    |
+			    | Timber Context
+			    |-----------------
+			    #}
+		    	<div class="toggle-content" id="timber">
+		    		<h3>Timber Base Context</h3>
+		    		<hr>
+					{{ dump(base_context) }}
+		    	</div>
+
+		    	{#
+			    |
+			    | Timber Custom  Context
+			    |-------------------------
+			    #}
+		    	<div class="toggle-content" id="timber_custom">
+		    		<h3>Timber Custom Context</h3>
+		    		<hr>
+					{{ dump(custom_context) }}
+		    	</div>
+
+		    	{#
+			    |
+			    | Super Globals
+			    |----------------
+			    #}
+		    	<div class="toggle-content" id="globals">
+		    		<h3>Super Globals</h3>
+		    		<hr>
+					<div class="font-lg color-red mb-sm">$_SERVER</div>
+		    		{{ debugMacro.dump(globals.server) }}
+		    	</div>
+
+		    	{#
+			    |
+			    | User
+			    |------
+			    #}
+		    	<div class="toggle-content" id="user">
+		    		<h3>User</h3>
+		    		<hr>
+		    		{{ dump(base_context.user) }}
+		    	</div>
+		    </div>
+		</div>
+		
+	</div>
+</div>

@@ -1,0 +1,21 @@
+#-------------------------------------------------------
+#               AJAX ROUTES CONFIGURATION
+#-------------------------------------------------------
+#
+# This file is meant to list all ajax routes, and make each route 
+# correspond to a couple 'controler-method'
+#
+#
+
+#--------------------- Routes ----------------------
+load_all_posts:
+  path: 'ajax/posts'
+  controller: NewsController::findAll
+
+load_one_post: 
+  path: 'ajax/post/:id'
+  controller: NewsController::findOne
+
+load_posts_of_category: 
+  path: 'ajax/posts/category/:category'
+  controller: NewsController::findByCategory

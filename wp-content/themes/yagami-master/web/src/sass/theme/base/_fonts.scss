@@ -1,0 +1,36 @@
+//------- FONTS
+
+// 100    Extra Light or Ultra Light
+// 200    Light or Thin
+// 300    Book or Demi
+// 400    Normal or Regular
+// 500    Medium
+// 600    Semibold, Demibold
+// 700    Bold
+// 800    Black, Extra Bold or Heavy
+// 900    Extra Black, Fat, Poster or Ultra Black
+
+@font-face {
+    font-family: 'butler';
+    src: url('../fonts/butler/Butler_ExtraBold.otf');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'butler';
+    src: url('../fonts/butler/Butler_Light.otf');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/montserrat/Montserrat-Black.otf');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/montserrat/Montserrat-Light.ttf');
+    font-weight: 100;
+    font-style: normal;
+}

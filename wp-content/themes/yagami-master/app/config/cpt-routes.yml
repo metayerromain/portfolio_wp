@@ -1,0 +1,16 @@
+#-------------------------------------------------------
+#               CPT ROUTES CONFIGURATION
+#-------------------------------------------------------
+#
+# To configure CPT routes, follow the exemple below (for the Sample CPT).
+# Copy and paste that config, to add CPT routes
+#
+#
+
+#--------------------- Projects ----------------------
+projects:
+  archive: ProjectsController::archive
+  single: ProjectsController::single
+  taxs:
+    genres: ProjectsController::genre
+

@@ -1,0 +1,26 @@
+//------- DEFAULT
+body{
+  font-family: $font-family-default;
+  color: $default-color;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
+  font-weight: $default-font-weight;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow-x: hidden;
+  cursor: none;
+
+}
+h1, h2, h3, h4, h5, h6{
+  @each $property, $value in $default-titles{
+    #{$property}: $value;
+  }
+} 
+
+a{
+  color: inherit;
+  &:hover{
+    color: inherit;
+    cursor: none !important;
+  }
+}

@@ -1,0 +1,55 @@
+{#
+|
+| Table dump
+|-------------
+#}
+{% macro dump(array) %}
+	<table class="debug-table">
+		<tbody>
+			{% for key, value in array|cast_to_array %}
+				<tr>
+					<td class="color-red">{{ key }}</td>
+					<td>
+						{% set val = value|cast_to_array is iterable ? dump(value) : value %}
+				
+						{{ val }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endmacro %}
+
+{#
+|
+| Deep dump
+|-------------
+#}
+{% macro deepDump(array) %}
+	{% for key, value in array|cast_to_array %}
+		<h4 class="color-red">{{ key }}</h4>
+		
+		{% if value|cast_to_array is iterable %}
+			<table class="debug-table mt-sm mb-md">
+				<tbody>
+					{% for k, v in value|cast_to_array %}
+						<tr>
+							<td class="color-red">{{ k }}</td>
+							<td>
+								{% set val = v|cast_to_array is iterable ? dump(v) : v %}
+						
+								{{ val }}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<hr>
+			<div class="mb-md">{{ dump(value) }}</div>
+			
+		{% endif %}
+
+		
+	{% endfor %}
+{% endmacro %}
